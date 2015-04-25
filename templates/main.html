@@ -1,0 +1,44 @@
+<ion-view>
+    <ion-nav-title>
+        OpenBeer
+    </ion-nav-title>
+    <ion-content>
+
+        <div class="list">
+            <div class="item-input-inset">
+
+                <label class="item-input-wrapper">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" ng-model="dom.search" placeholder="Search">
+                </label>
+                <button class="button button-small" ng-click="doSearch()">
+                    Search
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="list">
+
+            <a class="item item-thumbnail-left" href="/#/beer/{{beer.id}}" collection-repeat="beer in data.data">
+                <img ng-src="{{beer.labels.icon}}">
+                <h2>{{beer.name}}</h2>
+                <p>{{beer.style.name}}</p>
+            </a>
+
+            <ion-infinite-scroll
+                on-infinite="loadMore()"
+                ng-if="hasMoreData()"
+                distance="1%">
+            </ion-infinite-scroll>
+
+
+        </div>
+
+
+    </div>
+
+
+</ion-content>
+</ion-view>
