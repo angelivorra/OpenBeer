@@ -1,10 +1,14 @@
 angular.module('openbeer.controllers', ['ionic','openbeer.services'])
 
 
-.controller('MainController', function($scope, $http, $ionicLoading) {
+.controller('MainController', function($scope, $http, $ionicLoading, $state) {
   console.log('Main');
   $scope.dom = {};
   $scope.data = {};
+
+  $scope.loadBeer = function(id) {
+    $state.go('beer', { id : id });
+  };
 
   $scope.doSearch = function() {
     console.log('doSearch('+$scope.dom.search+')');
